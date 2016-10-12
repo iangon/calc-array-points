@@ -108,31 +108,42 @@ func subtract(p1 : (x: Int, y: Int), p2 : (x: Int, y: Int)) -> (_: Int, _: Int) 
 
 
 func add(p1 : Dictionary<String, Int>, p2 : Dictionary<String, Int>) -> Dictionary<String, Int>? {
+    if p1["x"] != nil {
+        return [ "x" : p1["x"]! + p2["x"]!, "y" : p1["y"]! + p2["y"]!]
 
+    }
     return [ "x" : p1["x"]! + p2["x"]!, "y" : p1["y"]! + p2["y"]!]
 }
 
-func add(p1 : Dictionary<String, Int>?, p2 : Dictionary<String, Int>?) -> Dictionary<String, Int>? {
-    return nil
+func add(p1 : Dictionary<String, Double>? = nil, p2 : Dictionary<String, Double>?) -> Dictionary<String, Double>? {
+    if p1 == nil || p2 == nil || p1!["x"] == nil || p1!["y"] == nil || p2!["x"] == nil || p2!["y"] == nil {
+        return nil
+    }
+    return [
+        "x" : p1!["x"]! + p2!["x"]!,
+        "y" : p1!["y"]! + p2!["y"]!
+    ]
 }
 
-func add(p1 : Dictionary<String, Double>, p2 : Dictionary<String, Double>) -> Dictionary<String, Double>? {
-    return [ "x" : p1["x"]! + p2["x"]!, "y" : p1["y"]! + p2["y"]!]
-}
-
-func subtract(p1 : Dictionary<String, Int>, p2 : Dictionary<String, Int>) -> Dictionary<String, Int>?
+func subtract(p1 : Dictionary<String, Int>?, p2 : Dictionary<String, Int>?) -> Dictionary<String, Int>?
 {
-    if p1["x"] == nil || p1["y"] == nil || p2["x"] == nil || p2["y"] == nil {
+    if p1!["x"] == nil || p1!["y"] == nil || p2!["x"] == nil || p2!["y"] == nil {
         return nil
     }
     
-    return [ "x" : p1["x"]! - p2["x"]! , "y" : p1["y"]! - p2["y"]!]
+    return [
+        "x" : p1!["x"]! - p2!["x"]! ,
+        "y" : p1!["y"]! - p2!["y"]!
+    ]
 }
 
-func subtract(p1 : Dictionary<String, Double>, p2 : Dictionary<String, Double>) -> Dictionary<String, Double>?
+func subtract(p1 : Dictionary<String, Double>?, p2 : Dictionary<String, Double>?) -> Dictionary<String, Double>?
 {
-    if p1["x"] == nil || p1["y"] == nil || p2["x"] == nil || p2["y"] == nil {
+    if p1 == nil || p2 == nil || p1!["x"] == nil || p1!["y"] == nil || p2!["x"] == nil || p2!["y"] == nil {
         return nil
     }
-    return [ "x" : p1["x"]! - p2["x"]! , "y" : p1["y"]! - p2["y"]!]
+    return [
+        "x" : p1!["x"]! - p2!["x"]!,
+        "y" : p1!["y"]! - p2!["y"]!
+    ]
 }
